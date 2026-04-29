@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MERN Mastery Program - Complete notes covering Node.js, Express, MongoDB, React, JWT Authentication, and more.">
+    <meta name="keywords" content="MERN, MongoDB, Express, React, Node.js, JWT, Authentication, OTP, Full Stack">
+    <meta name="Author" content="Joshua">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="MERN Mastery - Complete Notes">
+    <meta property="og:description" content="Complete notes covering Node.js, Express, MongoDB, React, JWT Authentication, and more.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MERN Mastery - Complete Notes">
+    <meta name="twitter:description" content="Complete notes covering Node.js, Express, MongoDB, React, JWT Authentication, and more.">
+    <link rel="canonical" href="https://mern-mastery-notes.com">
+    <title>MERN Mastery — Complete Notes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#7c3aed',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        pre { border-radius: 0.5rem; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-12 sticky top-0 z-60 shadow-lg">
+        <div class="max-w-4xl mx-auto px-4 flex flex-col items-center">
+            <!-- MERN Stack Logo -->
+            <div class="mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" class="w-48 h-14" fill="none">
+                    <!-- MongoDB Green -->
+                    <text x="10" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#4DB33D">M</text>
+                    <!-- Express Gray -->
+                    <text x="38" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#777777">E</text>
+                    <!-- React Cyan -->
+                    <text x="66" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#61DAFB">R</text>
+                    <!-- Node.js Green -->
+                    <text x="94" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#339933">N</text>
+                    <!-- Stack text -->
+                    <text x="130" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">STACK</text>
+                </svg>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-2">MERN Mastery</h1>
+            <p class="text-xl text-blue-100">Complete Notes</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-55">
+        <div class="max-w-4xl mx-auto px-4">
+            <!-- Mobile Hamburger Button -->
+            <div class="flex items-center justify-between py-3 md:hidden">
+                <span class="font-semibold text-gray-700">Chapters</span>
+                <button id="hamburger-btn" class="p-2 rounded hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary" aria-label="Toggle menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Navigation Links -->
+            <div id="nav-menu" class="hidden md:block pb-3 md:py-3">
+                <div class="flex flex-col md:flex-row md:gap-4 text-sm font-medium">
+                    <a href="#chapter1" class="block py-2 md:py-0 text-primary hover:underline">Node.js & Express</a>
+                    <a href="#chapter2" class="block py-2 md:py-0 text-primary hover:underline">Folder Architecture</a>
+                    <a href="#chapter3" class="block py-2 md:py-0 text-primary hover:underline">MongoDB</a>
+                    <a href="#chapter4" class="block py-2 md:py-0 text-primary hover:underline">Zod Validation</a>
+                    <a href="#chapter5" class="block py-2 md:py-0 text-primary hover:underline">Security</a>
+                    <a href="#chapter6" class="block py-2 md:py-0 text-primary hover:underline">JWT</a>
+                    <a href="#chapter7" class="block py-2 md:py-0 text-primary hover:underline">OTP</a>
+                    <a href="#chapter8" class="block py-2 md:py-0 text-primary hover:underline">Forgot Password</a>
+                    <a href="#chapter9" class="block py-2 md:py-0 text-primary hover:underline">React</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        
+        <!-- Chapter 1 -->
+        <section id="chapter1" class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-primary pb-2">Chapter 1 — Node.js & Express</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">What is Node.js?</h3>
+                    <p class="text-gray-600 leading-relaxed">Node.js allows JavaScript to run on a server. Before Node.js, JavaScript only ran in browsers. Node.js gives JavaScript access to the file system, network, and memory — everything a server needs.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">What is Express?</h3>
+                    <p class="text-gray-600 leading-relaxed">Express is a framework that wraps Node's built-in HTTP module and gives you clean tools for routing, middleware, and request/response handling.</p>
+                    <div class="bg-blue-50 border-l-4 border-primary p-4 mt-3 rounded-r">
+                        <p class="text-sm text-blue-800"><strong>Analogy:</strong> Node.js is the engine. Express is the steering wheel, pedals, and dashboard.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">What is Middleware?</h3>
+                    <p class="text-gray-600 leading-relaxed">Middleware is a function that has access to the request, the response, and a <code class="bg-gray-100 px-2 py-1 rounded text-sm">next</code> function. Every request travels through middleware before reaching its destination.</p>
+                    <div class="bg-gray-900 text-gray-100 p-4 rounded-lg my-4 overflow-x-auto">
+                        <pre><code class="text-sm">Request → middleware1 → middleware2 → controller → Response</code></pre>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">Each middleware can:</p>
+                    <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                        <li>Read or modify the request</li>
+                        <li>Read or modify the response</li>
+                        <li>Call <code class="bg-gray-100 px-2 py-1 rounded text-sm">next()</code> to pass control forward</li>
+                        <li>Stop the chain by sending a response</li>
+                    </ul>
+                    <div class="bg-red-50 border-l-4 border-red-500 p-4 mt-4 rounded-r">
+                        <p class="text-sm text-red-800"><strong>Critical rule:</strong> If a middleware does not call <code class="bg-gray-100 px-1 rounded">next()</code> and does not send a response, the request hangs forever.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">HTTP Status Codes</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-100">
+                                    <th class="p-3 border border-gray-300">Code</th>
+                                    <th class="p-3 border border-gray-300">Meaning</th>
+                                    <th class="p-3 border border-gray-300">When to use</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="p-3 border border-gray-300 font-mono text-green-600">200</td><td class="p-3 border border-gray-300">OK</td><td class="p-3 border border-gray-300">Successful request</td></tr>
+                                <tr><td class="p-3 border border-gray-300 font-mono text-green-600">201</td><td class="p-3 border border-gray-300">Created</td><td class="p-3 border border-gray-300">Resource created</td></tr>
+                                <tr><td class="p-3 border border-gray-300 font-mono text-red-600">400</td><td class="p-3 border border-gray-300">Bad Request</td><td class="p-3 border border-gray-300">Invalid data from client</td></tr>
+                                <tr><td class="p-3 border border-gray-300 font-mono text-red-600">401</td><td class="p-3 border border-gray-300">Unauthorized</td><td class="p-3 border border-gray-300">Not authenticated</td></tr>
+                                <tr><td class="p-3 border border-gray-300 font-mono text-red-600">403</td><td class="p-3 border border-gray-300">Forbidden</td><td class="p-3 border border-gray-300">Authenticated but not allowed</td></tr>
+                                <tr><td class="p-3 border border-gray-300 font-mono text-red-600">404</td><td class="p-3 border border-gray-300">Not Found</td><td class="p-3 border border-gray-300">Resource does not exist</td></tr>
+                                <tr><td class="p-3 border border-gray-300 font-mono text-red-600">500</td><td class="p-3 border border-gray-300">Internal Server Error</td><td class="p-3 border border-gray-300">Something broke on server</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Environment Variables</h3>
+                    <p class="text-gray-600 leading-relaxed mb-3">Never hardcode secrets. Store them in <code class="bg-gray-100 px-2 py-1 rounded text-sm">.env</code> and read them with <code class="bg-gray-100 px-2 py-1 rounded text-sm">process.env</code>:</p>
+                    <div class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                        <pre><code class="language-javascript text-sm">import dotenv from 'dotenv';
+dotenv.config(); // must run before anything reads process.env</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 2 -->
+        <section id="chapter2" class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-primary pb-2">Chapter 2 — Folder Architecture & The Controller Pattern</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Separation of Concerns</h3>
+                    <p class="text-gray-600 leading-relaxed mb-3">Every file has exactly one job:</p>
+                    <div class="bg-gray-900 text-green-400 p-4 rounded-lg overflow-x-auto font-mono text-sm">
+                        <pre>src/
+├── config/        → DB connection, env setup
+├── controllers/   → Business logic
+├── middleware/    → Gatekeeping and validation
+├── models/        → Data shape and DB interface
+├── routes/        → URL to controller mapping
+├── utils/         → Reusable helpers
+└── server.js      → Entry point</pre>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">The Request Lifecycle</h3>
+                    <div class="bg-gray-900 text-blue-300 p-4 rounded-lg overflow-x-auto font-mono text-sm">
+                        <pre>Incoming Request
+      │
+      ▼
+routes/         → Which controller handles this?
+      │
+      ▼
+middleware/     → Is the data valid? Is the user allowed?
+      │
+      ▼
+controllers/    → Run the business logic
+      │
+      ▼
+models/         → Talk to the database
+      │
+      ▼
+JSON Response   → Send back the result</pre>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Why Controllers Instead of Logic in Routes?</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li>Logic in routes cannot be reused</li>
+                        <li>Logic in routes cannot be tested in isolation</li>
+                        <li>Controllers give each function one clear job</li>
+                        <li>When something breaks you know exactly which file to open</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">The Guard Clause Pattern</h3>
+                    <p class="text-gray-600 leading-relaxed mb-3">Always check for the failure condition and return early:</p>
+                    <div class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                        <pre><code class="language-javascript text-sm">if (!user) return res.status(404).json({ message: "Not found" });
+if (!isMatch) return res.status(401).json({ message: "Invalid" });
+// only reach here if everything passed</code></pre>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Import Paths</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li><code class="bg-gray-100 px-2 py-1 rounded text-sm">./</code> means start in my current folder</li>
+                        <li><code class="bg-gray-100 px-2 py-1 rounded text-sm">../</code> means go up one folder</li>
+                        <li>Ask yourself: "Where am I and where is the file I need?"</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 3 -->
+        <section id="chapter3" class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-primary pb-2">Chapter 3 — MongoDB & Mongoose</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">What is MongoDB?</h3>
+                    <p class="text-gray-600 leading-relaxed">MongoDB stores data as JSON-like documents instead of rigid tables. This makes it a natural fit for JavaScript applications.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">What is Mongoose?</h3>
+                    <p class="text-gray-600 leading-relaxed">Mongoose sits between your app and MongoDB giving you:</p>
+                    <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                        <li><strong>Schemas</strong> — enforce the shape of your data</li>
+                        <li><strong>Models</strong> — clean interface for querying</li>
+                        <li><strong>Validation</strong> — reject malformed data</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Schema and Model Pattern</h3>
+                    <div class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                        <pre><code class="language-javascript text-sm">const userSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+}, { timestamps: true });
+
+const User = mongoose.model('User', userSchema);</code></pre>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2"><code class="bg-gray-100 px-2 py-1 rounded text-sm">{ timestamps: true }</code></h3>
+                    <p class="text-gray-600 leading-relaxed">Automatically adds <code class="bg-gray-100 px-2 py-1 rounded text-sm">createdAt</code> and <code class="bg-gray-100 px-2 py-1 rounded text-sm">updatedAt</code> to every document. You never manage these manually.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">DB Connection Rules</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li>Always <code class="bg-gray-100 px-2 py-1 rounded text-sm">await</code> the connection before starting the server</li>
+                        <li>Use <code class="bg-gray-100 px-2 py-1 rounded text-sm">process.exit(1)</code> on failure — do not let the app run without a database</li>
+                        <li>Store <code class="bg-gray-100 px-2 py-1 rounded text-sm">MONGO_URI</code> in <code class="bg-gray-100 px-2 py-1 rounded text-sm">.env</code></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 4 -->
+        <section id="chapter4" class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-primary pb-2">Chapter 4 — Data Validation with Zod</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Why Zod Over If Statements?</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li>10 fields = 10+ if statements with no Zod</li>
+                        <li>Zod gives structured, consistent error messages automatically</li>
+                        <li>Schemas are reusable and live in one place</li>
+                        <li>Controllers can assume data is already clean</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Zod Schema Pattern</h3>
+                    <div class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                        <pre><code class="language-javascript text-sm">import { z } from 'zod';
+
+const schema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Enter a valid email"),
+  password: z.string()
+    .min(8, "Password must be at least 8 characters")
+    .regex(/(?=.*[A-Z])/, "Include one capital letter")
+    .regex(/(?=.*[a-z])/, "Include one lowercase letter")
+    .regex(/(?=.*[0-9])/, "Include one number")
+    .regex(/(?=.*[^A-Za-z0-9])/, "Include one symbol"),
+});</code></pre>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2"><code class="bg-gray-100 px-2 py-1 rounded text-sm">safeParse</code> vs <code class="bg-gray-100 px-2 py-1 rounded text-sm">parse</code></h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li><code class="bg-gray-100 px-2 py-1 rounded text-sm">parse</code> throws an error on failure</li>
+                        <li><code class="bg-gray-100 px-2 py-1 rounded text-sm">safeParse</code> returns a result object you check — never throws</li>
+                        <li>Always use <code class="bg-gray-100 px-2 py-1 rounded text-sm">safeParse</code> in middleware</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Validation Middleware Pattern</h3>
+                    <div class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                        <pre><code class="language-javascript text-sm">const validateSchema = (schema) => {
+  return function(req, res, next) {
+    const result = schema.safeParse(req.body);
+    if (!result.success) {
+      return res.status(400).json({ 
+        errors: result.error.issues.map(i => i.message) 
+      });
+    }
+    req.body = result.data;
+    next();
+  };
+};</code></pre>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-primary p-4 rounded-r">
+                    <p class="text-sm text-blue-800"><strong>Why Validate in Middleware Not Controller?</strong> Middleware runs before the controller. If validation fails the controller never runs. Each piece has one job — middleware validates, controller handles business logic.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 5 -->
+        <section id="chapter5" class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-primary pb-2">Chapter 5 — Security: bcrypt & Password Hashing</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Why Hash Passwords?</h3>
+                    <p class="text-gray-600 leading-relaxed"><strong>Credential stuffing</strong> — most users reuse passwords. If your database is breached and passwords are plain text, attackers own every other app that user has an account on.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Why bcrypt?</h3>
+                    <ol class="list-decimal list-inside text-gray-600 space-y-2">
+                        <li><strong>Slow by design</strong> — limits brute force attacks to a few attempts per second instead of millions</li>
+                        <li><strong>Adds a salt automatically</strong> — two users with the same password get completely different hashes</li>
+                        <li><strong>One way</strong> — there is no reverse function to get the original password back</li>
+                    </ol>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">bcrypt Pattern</h3>
+                    <div class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                        <pre><code class="language-javascript text-sm">// Hashing — before saving to DB
+const hashedPassword = await bcrypt.hash(plainPassword, 10);
+
+// Comparing — during login
+const isMatch = await bcrypt.compare(plainPassword, hashedPassword);</code></pre>
+                    </div>
+                    <p class="text-gray-600 mt-2"><code class="bg-gray-100 px-2 py-1 rounded text-sm">10</code> is the saltRounds — the industry standard default.</p>
+                </div>
+
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r">
+                    <p class="text-sm text-yellow-800"><strong>Why Check Email Exists Before Hashing?</strong> Hashing is computationally expensive. If the user already exists the request will fail anyway. Checking first avoids unnecessary computation and keeps your server fast.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 6 -->
+        <section id="chapter6" class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-primary pb-2">Chapter 6 — JWT Authentication</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">What is JWT?</h3>
+                    <p class="text-gray-600 leading-relaxed mb-3">A JSON Web Token is a signed string with three parts:</p>
+                    <div class="bg-gray-900 text-purple-300 p-4 rounded-lg overflow-x-auto font-mono text-sm">
+                        <pre>header.payload.signature</pre>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-600 mt-3 space-y-1">
+                        <li><strong>Header</strong> — token type and algorithm</li>
+                        <li><strong>Payload</strong> — the data you store (userId, expiry)</li>
+                        <li><strong>Signature</strong> — proves the token was not tampered with</li>
+                    </ul>
+                    <div class="bg-red-50 border-l-4 border-red-500 p-4 mt-4 rounded-r">
+                        <p class="text-sm text-red-800"><strong>Critical:</strong> The payload is base64 encoded not encrypted. Anyone can read it. Never put passwords or sensitive data in a JWT.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Why userId in the Payload?</h3>
+                    <p class="text-gray-600 leading-relaxed"><code class="bg-gray-100 px-2 py-1 rounded text-sm">_id</code> is immutable — it never changes. Email and name are mutable — they can change. If you store mutable data in a token it becomes stale when the user updates their profile.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">JWT Pattern</h3>
+                    <div class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                        <pre><code class="language-javascript text-sm">// Generate — after login
+const token = jwt.sign(
+  { userId: user._id },
+  process.env.JWT_SECRET,
+  { expiresIn: '7d' }
+);
+
+// Verify — in middleware
+const decoded = jwt.verify(token, process.env.JWT_SECRET);</code></pre>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r">
+                    <p class="text-sm text-yellow-800"><strong>Why Same Error for Wrong Email and Wrong Password?</strong> Never tell an attacker which field was wrong. Knowing a valid email exists is enough information to launch targeted attacks. Always return the same generic message.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Expired vs Invalid Token</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li><strong>Expired</strong> — the token was real but the session window is over</li>
+                        <li><strong>Invalid</strong> — the token is malformed, tampered with, or signed with the wrong secret</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Auth Middleware Pattern</h3>
+                    <div class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                        <pre><code class="language-javascript text-sm">const protect = (req, res, next) => {
+  try {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
+    if (!token) return res.status(401).json({ message: "No token" });
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    return res.status(401).json({ message: "Invalid or expired token" });
+  }
+};</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 7 -->
+        <section id="chapter7" class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-primary pb-2">Chapter 7 — OTP & Email Verification</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Why Email Verification?</h3>
+                    <p class="text-gray-600 leading-relaxed">Without it users can register with emails they do not own. You have no proof of ownership. Password reset emails go to the wrong person.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Why crypto Over Math.random()?</h3>
+                    <p class="text-gray-600 leading-relaxed"><code class="bg-gray-100 px-2 py-1 rounded text-sm">Math.random()</code> is predictable enough for sophisticated attackers to guess upcoming values. <code class="bg-gray-100 px-2 py-1 rounded text-sm">crypto.randomInt()</code> is cryptographically secure — statistically impossible to predict.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">OTP Pattern</h3>
+                    <div class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                        <pre><code class="language-javascript text-sm">const otp = crypto.randomInt(100000, 999999).toString();
+const otpExpiry = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes</code></pre>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r">
+                    <p class="text-sm text-yellow-800"><strong>Why Delete OTP After Verification?</strong> If the OTP stays in the database, an attacker who gains database access later can replay it. Deleting it means it has a single use lifetime — once consumed it is gone.</p>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-primary p-4 rounded-r">
+                    <p class="text-sm text-blue-800"><strong>Why Check Expiry on the Server?</strong> The client is never trusted. Any user can modify JavaScript in their browser or send requests directly via tools. Server side validation cannot be bypassed by the client.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Nodemailer Pattern</h3>
+                    <div class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                        <pre><code class="language-javascript text-sm">const sendEmail = async (to, subject, html) => {
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS, // Gmail App Password not real password
+    },
+  });
+
+  await transporter.sendMail({
+    from: process.env.EMAIL_USER,
+    to, subject, html,
+  });
+};</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 8 -->
+        <section id="chapter8" class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-primary pb-2">Chapter 8 — Forgot Password</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">The Flow</h3>
+                    <div class="bg-gray-900 text-blue-300 p-4 rounded-lg overflow-x-auto font-mono text-sm">
+                        <pre>User submits email
+      │
+      ▼
+Server generates crypto reset token
+      │
+      ▼
+Token stored in DB with 15 min expiry
+      │
+      ▼
+Reset link emailed to user
+      │
+      ▼
+User clicks link → submits new password
+      │
+      ▼
+Server verifies token → updates password → clears token</pre>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Why a Token Instead of OTP for Password Reset?</h3>
+                    <p class="text-gray-600 leading-relaxed">A token in a link is better UX — user just clicks instead of copying a code. Tokens are also longer and harder to guess than 6 digit numbers.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Reset Token Pattern</h3>
+                    <div class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                        <pre><code class="language-javascript text-sm">const resetToken = crypto.randomBytes(32).toString('hex'); // 64 char string
+const resetTokenExpiry = new Date(Date.now() + 15 * 60 * 1000);</code></pre>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r">
+                    <p class="text-sm text-yellow-800"><strong>Why Single Use?</strong> Once used the token is deleted. Replaying the same reset link does nothing. This prevents attackers from reusing intercepted links.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 9 -->
+        <section id="chapter9" class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-primary pb-2">Chapter 9 — React Frontend</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">React Context</h3>
+                    <p class="text-gray-600 leading-relaxed">Solves prop drilling — passing data through components that do not need it just to reach a deeply nested component.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Three Parts of Context</h3>
+                    <ol class="list-decimal list-inside text-gray-600 space-y-2">
+                        <li><code class="bg-gray-100 px-2 py-1 rounded text-sm">createContext()</code> — creates the empty box</li>
+                        <li><code class="bg-gray-100 px-2 py-1 rounded text-sm">Provider</code> — holds state and puts it in the box</li>
+                        <li><code class="bg-gray-100 px-2 py-1 rounded text-sm">useContext()</code> — any component reads from the box</li>
+                    </ol>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Auth Context Pattern</h3>
+                    <div class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                        <pre><code class="language-javascript text-sm">const AuthContext = createContext(null);
+
+export const AuthProvider = ({ children }) => {
+  const [token, setToken] = useState(localStorage.getItem('token'));
+
+  const login = (newToken) => {
+    setToken(newToken);
+    localStorage.setItem('token', newToken);
+  };
+
+  const logout = () => {
+    setToken(null);
+    localStorage.removeItem('token');
+  };
+
+  return (
+    &lt;AuthContext.Provider value={{ token, login, logout }}&gt;
+      {children}
+    &lt;/AuthContext.Provider&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8 mt-12">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="text-sm">MERN Mastery Program — Complete Notes</p>
+            <a href="https://github.com/JstMeJosh/" class="text-xs mt-2 text-md text-center font-bold underline">JOSHUA NNOROM</a>
+        </div>
+    </footer>
+
+    <script>
+        hljs.highlightAll();
+    </script>
+    <script>
+        // Hamburger menu toggle
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburgerBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+        });
+        
+        // Close menu when clicking a link
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) {
+                    navMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
