@@ -1,14 +1,14 @@
 {
-  "name": "backend",
+  "name": "mern-mastery-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Production-ready MERN authentication system",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Joshua Nnorom",
   "license": "ISC",
   "type": "module",
   "dependencies": {
