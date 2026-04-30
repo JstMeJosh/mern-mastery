@@ -13,7 +13,7 @@ app.use(cors({
     'http://localhost:5173',
     'https://mern-mastery-ashy.vercel.app'
   ],
-  credentials: true,
+  credentials: true
 }));
 
 app.use("/api/auth", authRoutes);
@@ -25,11 +25,16 @@ app.use((err, req, res, next) => {
 });
 const PORT = process.env.PORT || 5000;
 
-const startSever = async () => {
-  await ConnectDB();
-  app.listen(PORT, () => {
-    console.log(`Server running on port:${PORT}`);
-  });
-};
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+  const startServer = async () => {
+    await ConnectDB();
+    app.listen(PORT, () => {
+      console.log(`Server running on port:${PORT}`);
+    });
+  };
+  startServer();
+}
 
-startSever();
+// Export for Vercel
+export default app;
