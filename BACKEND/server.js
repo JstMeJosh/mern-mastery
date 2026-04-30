@@ -11,8 +11,8 @@ app.use(express.json());
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://mern-mastery.vercel.app'
-    ]
+    'https://mern-mastery-ashy.vercel.app'
+  ],
   credentials: true,
 }));
 
